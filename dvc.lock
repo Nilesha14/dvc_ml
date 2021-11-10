@@ -22,3 +22,26 @@ stages:
     - path: rough/test.txt
       md5: 0b26e313ed4a7ca6904b0e9369e5b957
       size: 19
+  split_data:
+    cmd: python src/stage_02_split_data.py --config=config/config.yaml --params=params.yaml
+    deps:
+    - path: config/config.yaml
+      md5: 5ff7db6d94c4fce624ff486369464afa
+      size: 270
+    - path: src/stage_02_split_data.py
+      md5: b420365a91fc0c362e67bdc2e530a300
+      size: 1771
+    - path: src/utils/all_utils.py
+      md5: d30fb376018b11eb91505a9884e9cf3b
+      size: 490
+    params:
+      params.yaml:
+        base.random_state: 43
+        base.test_size: 0.3
+    outs:
+    - path: artifacts/split_data_dir/test.csv
+      md5: 64c9ebfc6a7c94aecefbfa3c69581116
+      size: 28801
+    - path: artifacts/split_data_dir/train.csv
+      md5: b9af3b94a8091719b7fb39b9a304e68b
+      size: 66367
